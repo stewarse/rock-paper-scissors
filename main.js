@@ -1,18 +1,11 @@
-/***
+/**
  * ask the user for their choice
  * determine the computers choice
  * 
  * play a round of the game with players choice and computer choice
  * select the winner based on a set of rules 
- */
+ **/
 const choiceArr = [ 'rock', 'paper', 'scissors' ]
-
-//const compChoice = computerPlay();
-//console.log(compChoice);
-//const userChoice = "Rock"
-
-//console.log( userChoice, compChoice )
-//console.log(playRound(userChoice,compChoice));
 
 //Determine the computers choice by selecting from the choices 
 function computerPlay() {
@@ -85,12 +78,10 @@ function playRound(user, comp) {
 }
 
 //Write a game function that plays a 5 round game 
-
-//Need to debug  this to figure out why it's no longer working
 function game() {
     counter = 0
     while(counter < 5){
-        userChoice = getUserchoice();
+        userChoice = getUserChoice();
         compChoice = computerPlay();
         console.log(playRound( userChoice, compChoice ))
         counter++
@@ -98,16 +89,13 @@ function game() {
 }
 
 
-
-
-
 //Create a function that takes input from the user and returns that input
-function getUserchoice() {
+function getUserChoice() {
     let choice = ''
     let keepGoing = true
 
     choice = prompt('Rock, Paper, or Scissors? ')
-
+    //Looping through until a user inputs an acceptable answer
     while(keepGoing) {
         if ((choice.toLowerCase().trim() === 'rock') || 
         (choice.toLowerCase().trim() === 'paper') || 
