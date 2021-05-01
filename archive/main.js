@@ -15,33 +15,61 @@ function computerPlay() {
 //Play a single round of Rock Paper Scissors
 //function takes two parameters (compChoice, userChoice)
 //return a string that declares the winner of the round (i.e. You suck! Paper beats rock)
+//ensure that player input is case insensitve
 function playRound(user, comp) {
-    let winLoseTie = 'win',
+    user = user.toLowerCase()
+
+    let winLoseTie,
     winningChoice = user,
     losingChoice = comp
     let verb = 'beats'
 
 
-    if (user === comp){
-        winLoseTie = 'tied'
-        verb = 'ties'
-    } else if (user === 'rock'){
-        if (comp === "paper") {
-            winLoseTie = 'lose';
-        }
-    } else if (user === 'paper'){
+    if (user === 'rock'){
         if (comp === "scissors") {
-            winLoseTie = 'lose';
+            winLoseTie = 'win';
+            winningChoice = user;
+            losingChoice = comp;
         }
-    } else {
+        else if (comp === "paper") {
+            winLoseTie = 'lose';
+            winningChoice = comp;
+            losingChoice = user;
+        }
+        else {
+            winLoseTie = 'tied'
+            verb = 'ties'
+        }
+    } else if (user.toLowerCase === 'paper'){
         if (comp === "rock") {
-            winLoseTie = 'lose';
+            winLoseTie = 'win';
+            winningChoice = user;
+            losingChoice = comp;
         }
-    }
-
-    if(winLoseTie === 'lose'){
-        winningChoice = 'comp'
-        losingChoice = 'player'
+        else if (comp === "scissors") {
+            winLoseTie = 'lose';
+            winningChoice = comp;
+            losingChoice = user;
+        }
+        else {
+            winLoseTie = 'tied'
+            verb = 'ties'
+        } 
+    } else {
+        if (comp === "paper") {
+            winLoseTie = 'win';
+            winningChoice = user;
+            losingChoice = comp;
+        }
+        else if (comp === "rock") {
+            winLoseTie = 'lose';
+            winningChoice = comp;
+            losingChoice = user;
+        }
+        else {
+            winLoseTie = 'tied'
+            verb = 'ties'
+        }
     }
 
     let result = `You ${winLoseTie}! ${winningChoice} ${verb} ${losingChoice}`
@@ -51,10 +79,13 @@ function playRound(user, comp) {
 
 //Write a game function that plays a 5 round game 
 function game() {
+    counter = 0
+    while(counter < 5){
         userChoice = getUserChoice();
         compChoice = computerPlay();
-        window.addEventListener('click', playRound( userChoice, compChoice ))
+        console.log(playRound( userChoice, compChoice ))
         counter++
+    }
 }
 
 
@@ -79,4 +110,4 @@ function getUserChoice() {
     return choice
 }
 
-//game()
+game()
