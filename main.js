@@ -15,6 +15,12 @@ function computerPlay() {
 //Play a single round of Rock Paper Scissors
 //function takes two parameters (compChoice, userChoice)
 //return a string that declares the winner of the round (i.e. You suck! Paper beats rock)
+
+/** Need to establish an event handler(s) that determines the user choice based ont he icon that's selected 
+ * Event handler should then capture user input and use it to play the round. 
+ * Round should still identify a winner. 
+ */
+
 function playRound(user, comp) {
     let winLoseTie = 'win',
     winningChoice = user,
