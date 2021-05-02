@@ -7,7 +7,7 @@
  **/
 const choiceArr = [ 'rock', 'paper', 'scissors' ]
 const i = document.querySelector('i');
-const button = document.querySelector('button');
+const buttons = document.querySelectorAll('button');
 const result = document.querySelector('#results');
 
 //Determine the computers choice by selecting from the choices 
@@ -42,10 +42,10 @@ function playRound( e, comp) {
     //user = user.toLowerCase()
     comp = computerPlay()
 
-    let winLoseTie = 'win',
+    let winLoseTie = winner ='are victorious',
     winningChoice = user,
     losingChoice = comp,
-    verb = 'beats'
+    verb = 'beats';
 
     if (user === comp){
         winLoseTie = 'tied'
@@ -64,9 +64,9 @@ function playRound( e, comp) {
         }
     }
 
-    if(winLoseTie === 'tie'){
-        winningChoice = 'comp'
-        losingChoice = 'player'
+    if(winLoseTie === 'lose'  ) {
+        winningChoice = comp;
+        losingChoice = user;
     }
 
     result.textContent = `You ${winLoseTie}! ${winningChoice} ${verb} ${losingChoice}`;
@@ -79,8 +79,9 @@ function playRound( e, comp) {
 //Write a game function that plays a 5 round game 
 function game() {
         compChoice = computerPlay();
-        button.addEventListener('click', playRound);
-        //counter++
+        buttons.forEach((button) => {
+            button.addEventListener('click', playRound);
+        });
 }
 
 game()
