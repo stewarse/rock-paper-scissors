@@ -1,0 +1,54 @@
+h1 {
+  display: flex;
+  justify-content: center;
+}
+
+#scoreboard {
+  display: flex;
+  width: min-content;
+  margin: auto;
+}
+
+.score {
+  width: 150px;
+  margin: 0px 50px;
+  padding: 10px 30px;
+  color: red;
+  justify-content: center;
+  border: 5px solid black;
+  justify-items: center;
+  text-align: center;
+}
+
+button {
+  margin: 10px 25px;
+  font-size: 108px;
+  background-color: white;
+  border: none;
+}
+
+.score div {
+  display: flex;
+  justify-content: center;
+}
+
+#selection-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0px auto;
+  max-width: 500px;
+  background-color: chartreuse;
+}
+
+#choice-title {
+  margin: 0px auto;
+}
+
+#select-options {
+  display: flex;
+  font-size: 108px;
+}
+
+#choice-title {
+  justify-content: center;
+}

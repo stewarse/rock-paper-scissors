@@ -6,6 +6,9 @@
  * select the winner based on a set of rules 
  **/
 const choiceArr = [ 'rock', 'paper', 'scissors' ]
+const i = document.querySelector('i');
+const button = document.querySelector('button');
+const result = document.querySelector('#results');
 
 //Determine the computers choice by selecting from the choices 
 function computerPlay() {
@@ -19,14 +22,30 @@ function computerPlay() {
 /** Need to establish an event handler(s) that determines the user choice based ont he icon that's selected 
  * Event handler should then capture user input and use it to play the round. 
  * Round should still identify a winner. 
- */
+*/
 
-function playRound(user, comp) {
+// document.body.addEventListener('click', (e) => {
+//     if ( e.target.nodeName === "I") {
+//         console.log(e.target.textContent);
+//     }
+
+// })
+
+
+
+function playRound( e, comp) {
+    
+//     if ( e.target.nodeName === "I") {
+//         console.log(e.target.textContent);
+//     }
+    user = e.target.textContent
+    //user = user.toLowerCase()
+    comp = computerPlay()
+
     let winLoseTie = 'win',
     winningChoice = user,
-    losingChoice = comp
-    let verb = 'beats'
-
+    losingChoice = comp,
+    verb = 'beats'
 
     if (user === comp){
         winLoseTie = 'tied'
@@ -45,44 +64,23 @@ function playRound(user, comp) {
         }
     }
 
-    if(winLoseTie === 'lose'){
+    if(winLoseTie === 'tie'){
         winningChoice = 'comp'
         losingChoice = 'player'
     }
 
-    let result = `You ${winLoseTie}! ${winningChoice} ${verb} ${losingChoice}`
+    result.textContent = `You ${winLoseTie}! ${winningChoice} ${verb} ${losingChoice}`;
 
-    return result
+    console.log(`You ${winLoseTie}! ${winningChoice} ${verb} ${losingChoice}`);
+
+    return true
 }
 
 //Write a game function that plays a 5 round game 
 function game() {
-        userChoice = getUserChoice();
         compChoice = computerPlay();
-        window.addEventListener('click', playRound( userChoice, compChoice ))
-        counter++
+        button.addEventListener('click', playRound);
+        //counter++
 }
 
-
-//Create a function that takes input from the user and returns that input
-function getUserChoice() {
-    let choice = ''
-    let keepGoing = true
-
-    choice = prompt('Rock, Paper, or Scissors? ')
-    //Looping through until a user inputs an acceptable answer
-    while(keepGoing) {
-        if ((choice.toLowerCase().trim() === 'rock') || 
-        (choice.toLowerCase().trim() === 'paper') || 
-        (choice.toLowerCase().trim() === 'scissors')) {
-            keepGoing = false;
-        } else {
-            choice = prompt('You must select Rock, Paper, or Scissors. Try again:')
-        }
-
-    }
-
-    return choice
-}
-
-//game()
+game()
