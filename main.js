@@ -2,22 +2,18 @@
  * ask the user for their choice
  * determine the computers choice
  * 
- * play a round of the game with players choice and computer choice
- * select the winner based on a set of rules 
+ * Create a start button that allows a user to start a new game.
+ *  Should reset the game back to it's original state, all scores and counters back to init values 
+ * play a round of the game with players choice and computer choice - DONE
+ *  Record the winner of the round via a score
+ *  End the game when one player reaches 5
+ * select the winner based on a set of rules - DONE
  **/
 const choiceArr = [ 'rock', 'paper', 'scissors' ]
 const i = document.querySelector('i');
 const buttons = document.querySelectorAll('button');
 const result = document.querySelector('#results');
-
-//Determine the computers choice by selecting from the choices 
-function computerPlay() {
-    return choiceArr[Math.floor(Math.random() * choiceArr.length)]
-}
-
-//Play a single round of Rock Paper Scissors
-//function takes two parameters (compChoice, userChoice)
-//return a string that declares the winner of the round (i.e. You suck! Paper beats rock)
+const start = document.querySelector('#start-game');
 
 /** Need to establish an event handler(s) that determines the user choice based ont he icon that's selected 
  * Event handler should then capture user input and use it to play the round. 
@@ -76,6 +72,11 @@ function playRound( e, comp) {
     return true
 }
 
+//Determine the computers choice by selecting from the choices 
+function computerPlay() {
+    return choiceArr[Math.floor(Math.random() * choiceArr.length)]
+}
+
 //Write a game function that plays a 5 round game 
 function game() {
         compChoice = computerPlay();
@@ -84,4 +85,4 @@ function game() {
         });
 }
 
-game()
+start.addEventListener('click',game);

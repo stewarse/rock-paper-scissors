@@ -9,22 +9,34 @@ h1 {
   margin: auto;
 }
 
+.fa,
+.fa-hand-rock-o,
+.fa-hand-paper-o,
+.f-hand-scissors-o {
+  font-size: 108px;
+}
+
 .score {
   width: 150px;
   margin: 0px 50px;
   padding: 10px 30px;
-  color: red;
   justify-content: center;
   border: 5px solid black;
   justify-items: center;
   text-align: center;
 }
 
-button {
+.selection {
   margin: 10px 25px;
-  font-size: 108px;
   background-color: white;
   border: none;
+}
+
+#start-btn {
+  display: flex;
+  width: 14%;
+  margin: 15px auto;
+  font-size: 48px;
 }
 
 .score div {
@@ -35,9 +47,8 @@ button {
 #selection-wrapper {
   display: flex;
   flex-wrap: wrap;
-  margin: 0px auto;
+  margin: 40px auto;
   max-width: 500px;
-  background-color: chartreuse;
 }
 
 #choice-title {
@@ -51,4 +62,18 @@ button {
 
 #choice-title {
   justify-content: center;
+}
+
+#display-selection {
+  display: flex;
+}
+
+.display {
+  width: 150px;
+  margin: 0px 50px;
+  padding: 10px 30px;
+  justify-content: center;
+  border: 5px solid black;
+  justify-items: center;
+  text-align: center;
 }

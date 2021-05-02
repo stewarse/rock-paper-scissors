@@ -27,25 +27,26 @@
 
         <div id="select-options">
             <div>
-                <button value="rock" class="fa fa-hand-rock-o" aria-hidden="true"></button>
+                <button value="rock" class="fa fa-hand-rock-o selection" aria-hidden="true"></button>
             </div>
             <div>
-                <button value="paper" class="fa fa-hand-paper-o" aria-hidden="true"></button>
+                <button value="paper" class="fa fa-hand-paper-o selection" aria-hidden="true"></button>
             </div>
             <div>
-                <button value="scissors" class="fa fa-hand-scissors-o" aria-hidden="true"></button>
+                <button value="scissors" class="fa fa-hand-scissors-o selection" aria-hidden="true"></button>
             </div>
+
         </div>
     </div>
     
     <div id="display-selection">
         <div >
-            <h2>Player's Selection</h2>
-            <span id="player-selection"></span>
+            <h2 class="display">Player's Selection</h2>
+            <span class="fa fa-hand-rock-o display" id="player-selection"></span>
         </div>
         <div>
-            <h2>Computer's Selection</h2>
-            <span id="comp-selection"></spanid>
+            <h2 class="display">Computer's Selection</h2>
+            <span class="fa fa-hand-rock-o display" id="comp-selection"></spanid>
         </div>
     </div>
 
@@ -53,6 +54,8 @@
         <h2>Results</h2>
         <p id='results'>Play a round to see how you do!</p>
     </div>
+
+    <button id="start-btn">Start Match</button>
 
     <script src="main.js"></script>
 </body>
