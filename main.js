@@ -38,7 +38,7 @@ function playRound( e, comp) {
 //     if ( e.target.nodeName === "I") {
 //         console.log(e.target.textContent);
 //     }
-    user = e.target.textContent
+    user = e.target.value
     //user = user.toLowerCase()
     comp = computerPlay()
 
