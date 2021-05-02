@@ -1,3 +1,10 @@
+.fa,
+.fa-hand-rock-o,
+.fa-hand-paper-o,
+.f-hand-scissors-o {
+  font-size: 108px;
+}
+
 h1 {
   display: flex;
   justify-content: center;
@@ -7,13 +14,6 @@ h1 {
   display: flex;
   width: min-content;
   margin: auto;
-}
-
-.fa,
-.fa-hand-rock-o,
-.fa-hand-paper-o,
-.f-hand-scissors-o {
-  font-size: 108px;
 }
 
 .score {
@@ -26,10 +26,58 @@ h1 {
   text-align: center;
 }
 
+.score div {
+  display: flex;
+  justify-content: center;
+}
+
+#choice-title {
+  margin: 0px auto;
+}
 .selection {
   margin: 10px 25px;
   background-color: white;
   border: none;
+}
+
+#user-selection {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 40px auto;
+  max-width: 500px;
+}
+
+#select-options {
+  display: flex;
+}
+
+#display-selection {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 40px auto;
+  max-width: 600px;
+}
+.display-title {
+  border-bottom: 1.5px;
+}
+
+#display-user-selection {
+  display: flex;
+  flex-wrap: wrap;
+  width: min-content;
+  margin: 30px;
+}
+
+#display-comp-selection {
+  display: flex;
+  flex-wrap: wrap;
+  width: min-content;
+  margin: 30px;
+}
+
+#comp-selection {
+  display: flex;
 }
 
 #start-btn {
@@ -39,36 +87,7 @@ h1 {
   font-size: 48px;
 }
 
-.score div {
-  display: flex;
-  justify-content: center;
-}
-
-#selection-wrapper {
-  display: flex;
-  flex-wrap: wrap;
-  margin: 40px auto;
-  max-width: 500px;
-}
-
-#choice-title {
-  margin: 0px auto;
-}
-
-#select-options {
-  display: flex;
-  font-size: 108px;
-}
-
-#choice-title {
-  justify-content: center;
-}
-
-#display-selection {
-  display: flex;
-}
-
-.display {
+/* .display {
   width: 150px;
   margin: 0px 50px;
   padding: 10px 30px;
@@ -76,4 +95,4 @@ h1 {
   border: 5px solid black;
   justify-items: center;
   text-align: center;
-}
+} */

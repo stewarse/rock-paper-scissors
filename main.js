@@ -13,7 +13,7 @@ const choiceArr = [ 'rock', 'paper', 'scissors' ]
 const i = document.querySelector('i');
 const buttons = document.querySelectorAll('button');
 const result = document.querySelector('#results');
-const start = document.querySelector('#start-game');
+const start = document.querySelector('#start-btn');
 
 /** Need to establish an event handler(s) that determines the user choice based ont he icon that's selected 
  * Event handler should then capture user input and use it to play the round. 
