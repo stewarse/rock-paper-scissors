@@ -15,6 +15,8 @@ const i = document.querySelector('i');
 const buttons = document.querySelectorAll('button');
 const result = document.querySelector('#results');
 const start = document.querySelector('#start-btn');
+const compScoreLabel = document.querySelector('div#computer-score')
+const userScoreLabel = document.querySelector('div#user-score')
 
 let activeGame = false;
 let alreadyPlayed = false;
@@ -56,17 +58,17 @@ function playRound( e ) {
     } else if (userChoice === 'rock'){
         if (compChoice === "paper") {
             winLoseTie = 'lose';
-            winner = 'comp'
+            roundWinner = 'comp'
         }
     } else if (userChoice === 'paper'){
         if (compChoice === "scissors") {
             winLoseTie = 'lose';
-            winner = 'comp'
+            roundWinner = 'comp'
         }
     } else {
         if (compChoice === "rock") {
             winLoseTie = 'lose';
-            winner = 'comp'
+            roundWinner = 'comp'
         }
     }
 
@@ -94,28 +96,26 @@ function game() {
     buttons.forEach((button) => {
         button.addEventListener('click', playRound);
     });
-    console.log(roundWinner);
 }
 
 start.addEventListener('click',startGame);
 
 function startGame() {
-    if(userScore !== 5 && compScore != 5) {
-        if (activeGame === true) {
-            alert('Please choose your weapon')      
-        } else if(alreadyPlayed === true) {
-            activeGame = true;
-            //reset the scores
-            resetScore()
-            //initialize the game
-            game();
-        } else {
-            activeGame = true;
-            game();  
-        }
+    //Need to add a counter to only run play round while scores <5
+    if (activeGame === true) {
+        alert('Please choose your weapon')      
+    } else if(alreadyPlayed === true) {
+        activeGame = true;
+        //reset the scores
+        resetScore()
+        //initialize the game
+        game();
     } else {
-        declareWinner()
+        activeGame = true;
+        game();  
     }
+
+    declareWinner()
 }
 
 function resetScore () {
@@ -125,9 +125,11 @@ function resetScore () {
 
 function updateScore(winner){
     if(winner === 'user') {
-        userScore += 1
+        userScore += 1;
+        userScoreLabel.textContent = `${userScore}`
     } else {
-        compScore += 1
+        compScore += 1; 
+        compScoreLabel.textContent = `${compScore}`;
     }
 }
 
