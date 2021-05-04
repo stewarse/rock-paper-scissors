@@ -15,6 +15,11 @@ const buttons = document.querySelectorAll('button');
 const result = document.querySelector('#results');
 const start = document.querySelector('#start-btn');
 
+let activeGame = false;
+let alreadyPlayed = false;
+let userScore = 0;
+let compScore = 0;
+
 /** Need to establish an event handler(s) that determines the user choice based ont he icon that's selected 
  * Event handler should then capture user input and use it to play the round. 
  * Round should still identify a winner. 
@@ -69,7 +74,7 @@ function playRound( e, comp) {
 
     console.log(`You ${winLoseTie}! ${winningChoice} ${verb} ${losingChoice}`);
 
-    return true
+    return winningChoice;
 }
 
 //Determine the computers choice by selecting from the choices 
@@ -79,10 +84,31 @@ function computerPlay() {
 
 //Write a game function that plays a 5 round game 
 function game() {
+
         compChoice = computerPlay();
         buttons.forEach((button) => {
             button.addEventListener('click', playRound);
         });
 }
 
-start.addEventListener('click',game);
+start.addEventListener('click',startGame);
+
+function startGame() {
+    if (activeGame === true) {
+        alert('Please choose your weapon')      
+    } else if(alreadyPlayed === true) {
+        activeGame = true;
+        //reset the scores
+        resetScore()
+        //initialize the game
+        game();
+    } else {
+        activeGame = true;
+        game();  
+    }
+}
+
+function resetScore () {
+    userScore = 0;
+    compScore = 0;
+}
