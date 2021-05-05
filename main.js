@@ -10,9 +10,16 @@
  *   End the game when one players score reaches 5
  * select the winner based on a set of rules - DONE
  **/
+
+let score = [0,0]
+let user = 0;
+let comp = 1;
+
+
+
 const choiceArr = [ 'rock', 'paper', 'scissors' ]
 const i = document.querySelector('i');
-const buttons = document.querySelectorAll('button');
+const buttons = document.querySelectorAll('button.selection');
 const result = document.querySelector('#results');
 const start = document.querySelector('#start-btn');
 const compScoreLabel = document.querySelector('div#computer-score')
@@ -20,8 +27,7 @@ const userScoreLabel = document.querySelector('div#user-score')
 
 let activeGame = false;
 let alreadyPlayed = false;
-let userScore = 0;
-let compScore = 0;
+
 
 /** Need to establish an event handler(s) that determines the user choice based ont he icon that's selected 
  * Event handler should then capture user input and use it to play the round. 
@@ -35,104 +41,112 @@ let compScore = 0;
 
 // })
 
-
+start.addEventListener('click',init);
 
 function playRound( e ) {
-    
-//     if ( e.target.nodeName === "I") {
-//         console.log(e.target.textContent);
-//     }
-    let userChoice = e.target.value
-    //user = user.toLowerCase()
-    // compChhoice = computerPlay()
 
-    let winLoseTie = 'are victorious'
-    , winningChoice = userChoice
-    , losingChoice = compChoice
-    , verb = 'beats'
-    , roundWinner = 'user';
+    if(score[0] !== 5 && score[1] !== 5) {
+    //check if there's a winner yet
 
-    if (userChoice === compChoice){
-        winLoseTie = 'tied'
-        verb = 'ties'
-    } else if (userChoice === 'rock'){
-        if (compChoice === "paper") {
-            winLoseTie = 'lose';
-            roundWinner = 'comp'
-        }
-    } else if (userChoice === 'paper'){
-        if (compChoice === "scissors") {
-            winLoseTie = 'lose';
-            roundWinner = 'comp'
-        }
-    } else {
-        if (compChoice === "rock") {
-            winLoseTie = 'lose';
-            roundWinner = 'comp'
-        }
-    }
+            let userChoice = e.target.value
+            //user = user.toLowerCase()
+            compChoice = computerPlay()
 
-    if(winLoseTie === 'lose'  ) {
-        winningChoice = compChoice;
-        losingChoice = userChoice;
-    }
+            let winLoseTie = 'are victorious'
+            , winningChoice = userChoice
+            , losingChoice = compChoice
+            , verb = 'beats'
+            , roundWinner = 'user';
 
-    result.textContent = `You ${winLoseTie}! ${winningChoice} ${verb} ${losingChoice}`;
+            if (userChoice === compChoice){
+                winLoseTie = 'tied'
+                verb = 'ties'
+            } else if (userChoice === 'rock'){
+                if (compChoice === "paper") {
+                    winLoseTie = 'lose';
+                    roundWinner = 'comp'
+                }
+            } else if (userChoice === 'paper'){
+                if (compChoice === "scissors") {
+                    winLoseTie = 'lose';
+                    roundWinner = 'comp'
+                }
+            } else {
+                if (compChoice === "rock") {
+                    winLoseTie = 'lose';
+                    roundWinner = 'comp'
+                }
+            }
 
-    console.log(`You ${winLoseTie}! ${winningChoice} ${verb} ${losingChoice}`);
-    if ( winLoseTie !== 'tied') {
-        updateScore(roundWinner);
+            if(winLoseTie === 'lose'  ) {
+                winningChoice = compChoice;
+                losingChoice = userChoice;
+            }
+
+            result.textContent = `You ${winLoseTie}! ${winningChoice} ${verb} ${losingChoice}`;
+
+            console.log(`You ${winLoseTie}! ${winningChoice} ${verb} ${losingChoice}`);
+
+            if ( winLoseTie !== 'tied') {
+                roundWinner = roundWinner.replace(/^"|"$/g, '');
+                updateScore(roundWinner);
+            }
+            
+            setupGame();
+    } else{
+        declareWinner();
     }
 }
-
 //Determine the computers choice by selecting from the choices 
 function computerPlay() {
     return choiceArr[Math.floor(Math.random() * choiceArr.length)]
 }
 
 //Write a game function that plays a 5 round game 
-function game() {
-    compChoice = computerPlay();
-    buttons.forEach((button) => {
-        button.addEventListener('click', playRound);
-    });
-}
-
-start.addEventListener('click',startGame);
+function setupGame() {
+        buttons.forEach((button) => {
+            button.addEventListener('click', playRound);
+        });
+    }
 
 function startGame() {
     //Need to add a counter to only run play round while scores <5
-    if (activeGame === true) {
-        alert('Please choose your weapon')      
-    } else if(alreadyPlayed === true) {
+    if(alreadyPlayed === true) {
         activeGame = true;
         //reset the scores
         resetScore()
         //initialize the game
-        game();
+        game();  
+    } else if(activeGame === true) {
+            alert('Please choose your weapon')   
     } else {
         activeGame = true;
-        game();  
+        setupGame(); 
     }
-
-    declareWinner()
 }
 
 function resetScore () {
-    userScore = 0;
-    compScore = 0;
+    score = [0,0];
+    userScoreLabel.textContent = `${score[user]}`
+    compScoreLabel.textContent = `${score[comp]}`;
 }
 
 function updateScore(winner){
     if(winner === 'user') {
-        userScore += 1;
-        userScoreLabel.textContent = `${userScore}`
+        score[user] += 1;
+        userScoreLabel.textContent = `${score[user]}`
     } else {
-        compScore += 1; 
-        compScoreLabel.textContent = `${compScore}`;
+        score[comp] += 1; 
+        compScoreLabel.textContent = `${score[comp]}`;
     }
 }
 
-function declareWinner(){
 
+function declareWinner(){
+    alert('Someone has won!')
+}
+
+function init(){
+    resetScore();
+    setupGame();
 }
