@@ -45,12 +45,12 @@ start.addEventListener('click',init);
 
 function playRound( e ) {
 
-    if(score[0] !== 5 && score[1] !== 5) {
+    // if(score[0] !== 5 && score[1] !== 5) {
     //check if there's a winner yet
 
             let userChoice = e.target.value
             //user = user.toLowerCase()
-            compChoice = computerPlay()
+            compChoice = 'rock'//computerPlay()
 
             let winLoseTie = 'are victorious'
             , winningChoice = userChoice
@@ -91,11 +91,6 @@ function playRound( e ) {
                 roundWinner = roundWinner.replace(/^"|"$/g, '');
                 updateScore(roundWinner);
             }
-            
-            setupGame();
-    } else{
-        declareWinner();
-    }
 }
 //Determine the computers choice by selecting from the choices 
 function computerPlay() {
@@ -139,11 +134,22 @@ function updateScore(winner){
         score[comp] += 1; 
         compScoreLabel.textContent = `${score[comp]}`;
     }
+    if(score.includes(5)){
+        declareWinner();
+    } else{
+        setupGame();
+    }
 }
 
 
 function declareWinner(){
-    alert('Someone has won!')
+    let finalMsg;
+    if(score.indexOf(5) === 0) {
+        finalMsg = 'defeated'
+    } else {
+        finalMsg = 'been defeated by'
+    }
+    alert(`You have ${finalMsg} the machine!`)
 }
 
 function init(){
