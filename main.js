@@ -11,19 +11,21 @@
  * select the winner based on a set of rules - DONE
  **/
 
-let score = [0,0]
+let score = [0,0];
 let user = 0;
 let comp = 1;
 
 
 
-const choiceArr = [ 'rock', 'paper', 'scissors' ]
-const i = document.querySelector('i');
+const choiceArr = [ 'rock', 'paper', 'scissors' ];
+
 const buttons = document.querySelectorAll('button.selection');
 const result = document.querySelector('#results');
 const start = document.querySelector('#start-btn');
-const compScoreLabel = document.querySelector('div#computer-score')
-const userScoreLabel = document.querySelector('div#user-score')
+const compScoreLabel = document.querySelector('div#computer-score');
+const userScoreLabel = document.querySelector('div#user-score');
+const playerSelection = document.querySelector('#player-selection')
+const computerSelection = document.querySelector('#comp-selection')
 
 let activeGame = false;
 let alreadyPlayed = false;
@@ -34,14 +36,7 @@ let alreadyPlayed = false;
  * Round should still identify a winner. 
 */
 
-// document.body.addEventListener('click', (e) => {
-//     if ( e.target.nodeName === "I") {
-//         console.log(e.target.textContent);
-//     }
-
-// })
-
-start.addEventListener('click',init);
+start.addEventListener('click', init);
 
 function playRound( e ) {
 
@@ -51,6 +46,8 @@ function playRound( e ) {
             let userChoice = e.target.value
             //user = user.toLowerCase()
             compChoice = 'rock'//computerPlay()
+
+            displaySelections(userChoice, compChoice);
 
             let winLoseTie = 'are victorious'
             , winningChoice = userChoice
@@ -134,16 +131,21 @@ function updateScore(winner){
         score[comp] += 1; 
         compScoreLabel.textContent = `${score[comp]}`;
     }
+
     if(score.includes(5)){
-        declareWinner();
+        setTimeout(declareWinner,10);
     } else{
         setupGame();
     }
 }
 
-
 function declareWinner(){
     let finalMsg;
+
+    buttons.forEach((button) => {
+        button.removeEventListener('click', playRound);
+    });
+
     if(score.indexOf(5) === 0) {
         finalMsg = 'defeated'
     } else {
@@ -155,4 +157,8 @@ function declareWinner(){
 function init(){
     resetScore();
     setupGame();
+}
+
+function displaySelections(user, comp) {
+    //Update to change the class of hidden to display on user and compselections
 }

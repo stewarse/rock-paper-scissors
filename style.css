@@ -26,6 +26,11 @@ h1 {
   text-align: center;
 }
 
+#user-score {
+  position: relative;
+  bottom: 0;
+}
+
 .score div {
   display: flex;
   justify-content: center;
@@ -54,7 +59,7 @@ h1 {
 #display-selection {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: space-evenly;
   margin: 40px auto;
   max-width: 600px;
 }
@@ -87,12 +92,28 @@ h1 {
   font-size: 48px;
 }
 
-/* .display {
-  width: 150px;
+.hidden {
+  display: none !important;
+}
+
+/* #results-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 10px auto;
+  width: 200px;
+  text-align: center;
+}
+
+#result {
+} */
+
+.display {
+  display: flex;
+  /* width: 150px;
   margin: 0px 50px;
   padding: 10px 30px;
   justify-content: center;
   border: 5px solid black;
   justify-items: center;
-  text-align: center;
-} */
+  text-align: center; */
+}
