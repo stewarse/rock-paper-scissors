@@ -24,16 +24,18 @@ h1 {
   border: 5px solid black;
   justify-items: center;
   text-align: center;
+  font-size: 18px;
 }
 
 #user-score {
   position: relative;
-  bottom: 0;
+  top: 28px;
 }
 
 .score div {
   display: flex;
   justify-content: center;
+  font-size: 48px;
 }
 
 #choice-title {
@@ -107,13 +109,13 @@ h1 {
 #result {
 } */
 
-.display {
+/* .display {
   display: flex;
-  /* width: 150px;
+  width: 150px;
   margin: 0px 50px;
   padding: 10px 30px;
   justify-content: center;
   border: 5px solid black;
   justify-items: center;
-  text-align: center; */
-}
+  text-align: center; 
+}*/

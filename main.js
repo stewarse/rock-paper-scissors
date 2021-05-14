@@ -25,7 +25,7 @@ const start = document.querySelector('#start-btn');
 const compScoreLabel = document.querySelector('div#computer-score');
 const userScoreLabel = document.querySelector('div#user-score');
 const playerSelection = document.querySelector('#player-selection')
-const computerSelection = document.querySelector('#comp-selection')
+const compSelection = document.querySelector('#comp-selection')
 
 let activeGame = false;
 let alreadyPlayed = false;
@@ -45,7 +45,7 @@ function playRound( e ) {
 
             let userChoice = e.target.value
             //user = user.toLowerCase()
-            compChoice = 'rock'//computerPlay()
+            compChoice = computerPlay()
 
             displaySelections(userChoice, compChoice);
 
@@ -80,7 +80,7 @@ function playRound( e ) {
                 losingChoice = userChoice;
             }
 
-            result.textContent = `You ${winLoseTie}! ${winningChoice} ${verb} ${losingChoice}`;
+            // result.textContent = `You ${winLoseTie}! ${winningChoice} ${verb} ${losingChoice}`;
 
             console.log(`You ${winLoseTie}! ${winningChoice} ${verb} ${losingChoice}`);
 
@@ -156,9 +156,20 @@ function declareWinner(){
 
 function init(){
     resetScore();
+    clearSelections();
     setupGame();
+    
 }
 
-function displaySelections(user, comp) {
+function displaySelections(player, comp) {
     //Update to change the class of hidden to display on user and compselections
+    clearSelections();
+    playerSelection.classList.add('fa', `fa-hand-${player}-o`);
+
+    compSelection.classList.add('fa', `fa-hand-${comp}-o`);
+}
+
+function clearSelections() {
+    playerSelection.className = '';
+    compSelection.className = '';
 }
