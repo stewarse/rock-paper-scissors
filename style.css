@@ -17,7 +17,7 @@ h1 {
 }
 
 .score {
-  width: 150px;
+  width: min-content;
   margin: 0px 50px;
   padding: 10px 30px;
   justify-content: center;
@@ -28,8 +28,7 @@ h1 {
 }
 
 #user-score {
-  position: relative;
-  top: 28px;
+  padding: 0 50px;
 }
 
 .score div {
@@ -95,7 +94,13 @@ h1 {
 }
 
 .hidden {
-  display: none !important;
+  color: white;
+}
+
+#comp-selection,
+#player-selection {
+  border: 5px solid black;
+  padding: 20px;
 }
 
 /* #results-wrapper {
@@ -119,3 +124,11 @@ h1 {
   justify-items: center;
   text-align: center; 
 }*/
+
+#Winner {
+  color: green;
+}
+
+#loser {
+  color: red;
+}

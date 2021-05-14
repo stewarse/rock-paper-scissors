@@ -156,7 +156,8 @@ function declareWinner(){
 
 function init(){
     resetScore();
-    clearSelections();
+    playerSelection.classList.add('hidden');
+    compSelection.classList.add('hidden');
     setupGame();
     
 }
